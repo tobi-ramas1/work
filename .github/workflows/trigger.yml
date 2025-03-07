@@ -1,0 +1,36 @@
+name: Trigger All Workflows
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    - cron: '*/34 * * * *'  # Runs every 34 minutes
+
+jobs:
+  trigger-workflows:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: [
+          'myvote1', 'myvote2', 'myvote3', 'myvote4', 'myvote5', 'myvote6', 'myvote7', 'myvote8', 'myvote9', 'myvote10',
+          'myvote11', 'myvote12', 'myvote13', 'myvote14', 'myvote15', 'myvote16', 'myvote17', 'myvote18', 'myvote19', 'myvote20',
+          'myvote21', 'myvote22', 'myvote23', 'myvote24', 'myvote25', 'myvote26', 'myvote27', 'myvote28', 'myvote29', 'myvote30',
+          'myvote31', 'myvote32', 'myvote33', 'myvote34', 'myvote35', 'myvote36', 'myvote37', 'myvote38', 'myvote39', 'myvote40',
+          'myvote41', 'myvote42', 'myvote43', 'myvote44', 'myvote45', 'myvote46'
+        ]  # Add all 46 repository names here
+    steps:
+      - name: Trigger Workflow in ${{ matrix.repo }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.REPO_PAT }}  # Use the PAT to trigger workflows
+          script: |
+            try {
+              await github.rest.actions.createWorkflowDispatch({
+                owner: 'tobi-ramas',
+                repo: '${{ matrix.repo }}',
+                workflow_id: 'main.yml',
+                ref: 'main'
+              });
+              console.log(`Successfully triggered workflow in ${{ matrix.repo }}`);
+            } catch (error) {
+              console.error(`Failed to trigger workflow in ${{ matrix.repo }}: ${error.message}`);
+            }
