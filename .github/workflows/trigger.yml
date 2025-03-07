@@ -25,7 +25,7 @@ jobs:
           script: |
             try {
               await github.rest.actions.createWorkflowDispatch({
-                owner: 'tobi-ramas',
+                owner: 'tobi-ramas1',
                 repo: '${{ matrix.repo }}',
                 workflow_id: 'main.yml',
                 ref: 'main'
