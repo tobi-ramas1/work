@@ -15,7 +15,7 @@ jobs:
           'myvote11', 'myvote12', 'myvote13', 'myvote14', 'myvote15', 'myvote16', 'myvote17', 'myvote18', 'myvote19', 'myvote20',
           'myvote21', 'myvote22', 'myvote23', 'myvote24', 'myvote25', 'myvote26', 'myvote27', 'myvote28', 'myvote29', 'myvote30',
           'myvote31', 'myvote32', 'myvote33', 'myvote34', 'myvote35', 'myvote36', 'myvote37', 'myvote38', 'myvote39', 'myvote40',
-          'myvote41', 'myvote42', 'myvote43', 'myvote44', 'myvote45', 'myvote46'
+          'myvote41', 'myvote42', 'myvote43', 'myvote44', 'myvote45', 'myvote46', 'myvote47'
         ]  # Add all 46 repository names here
     steps:
       - name: Trigger Workflow in ${{ matrix.repo }}
